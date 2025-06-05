@@ -15,7 +15,7 @@ import util.DBConnection;
 
 public class BaseDAO {
 
-	public ResultSet getDatosConsulta(String table, String where) {
+	private ResultSet getDatosConsulta(String table, String where) {
 		try {
 			Connection conn = DBConnection.getConnection();
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM " + table + " WHERE " + where);

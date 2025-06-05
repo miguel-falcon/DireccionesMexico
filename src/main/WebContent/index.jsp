@@ -17,7 +17,7 @@ ArrayList<Estado> listaEstados = (ArrayList<Estado>) request.getAttribute("lista
 
 <link rel="stylesheet" href="media/bootstrap-5.3.6/css/bootstrap.min.css">
 </head>
-	<body style="background-color: #E6F7FF;">
+	<body style="background-color: #E6F7FF;" onload="cargarEstados()">
 		<div class="container mt-5 ">
 			<h2 class="text-center">Dirección</h2>
 	
@@ -65,7 +65,7 @@ ArrayList<Estado> listaEstados = (ArrayList<Estado>) request.getAttribute("lista
 						</div>
 					</div>
 					<div class="col-12 mb-3">
-							<label for="colonia" class="form-label">Calle y Numero</label> 
+							<label for="colonia" class="form-label">Calle y Número</label> 
 							<input class="form-control" name="calleNumero" id="calleNumero" >
 					</div>
 				<button type="button" class="btn btn-primary form-control" onclick="ValidarFormulario()">Continuar</button>

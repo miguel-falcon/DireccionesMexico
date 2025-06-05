@@ -73,7 +73,7 @@ public class direcciones_mexico_servlet extends HttpServlet {
 		case "estadoMunicipioLocalidad":
 			String codigo_postal_value = request.getParameter("codigo_postal");
 			ArrayList<CodigoPostal> codigo_Postal = baseDao.getCodigosPostales("cp='" + codigo_postal_value + "'");
-
+			System.out.println("RESPUESTA: "+ codigo_Postal.toArray());
 			if (codigo_Postal != null && !codigo_Postal.isEmpty()) { 
 				String estadoClave = codigo_Postal.get(0).getEstado(); 
 
@@ -84,15 +84,15 @@ public class direcciones_mexico_servlet extends HttpServlet {
 					}
 
 					respuesta.append("|"); 
-
-					ArrayList<Municipio> municipios_X_CP = baseDao.getMunicipios("estado='" + estadoClave + "'");
+					String municipioClave = codigo_Postal.get(0).getMunicipio();
+					ArrayList<Municipio> municipios_X_CP = baseDao.getMunicipios("clave='" + municipioClave + "' and estado='" + estadoClave + "'" );
 					if (municipios_X_CP != null && !municipios_X_CP.isEmpty()) {
 						for (Municipio municipio : municipios_X_CP) {
 							respuesta.append(municipio.getClave()).append("=").append(municipio.getDescripcion()).append(";");
 						}
 						respuesta.append("|"); 
-
-						ArrayList<Localidad> localidades_X_CP = baseDao.getLocalidades("estado='" + estadoClave + "'");
+						String localidadClave = codigo_Postal.get(0).getLocalidad();
+						ArrayList<Localidad> localidades_X_CP = baseDao.getLocalidades("clave='" + localidadClave  + "' and estado='" + estadoClave + "'" );
 						if (localidades_X_CP != null && !localidades_X_CP.isEmpty()) {
 							for (Localidad localidad : localidades_X_CP) {
 								respuesta.append(localidad.getClave()).append("=").append(localidad.getDescripcion()).append(";");

@@ -45,7 +45,7 @@ function CargarMunicipiosLocalidades(modo, clave_estado){
  * Funcion que recupera los estados para ingresarlos a la lista, al igualque restaura los demas campos a vacío
  */
 function cargarEstados() {
-    let codigoPostal = $("#cp").val();
+    let codigoPostal = $("#codigo_postal").val();
     let servlet = "direcciones_mexico_servlet";
     let datos = { "modo": "cargarEstados" };
 
@@ -108,9 +108,9 @@ if(codigo_postal_value!=""){
             console.log("Respuesta del servidor:", response); 
 
             if (response.includes("ERROR")) {
-				cargarEstados();
                 ShowMensaje("Código Postal no encontrado", "El código postal ingresado no existe en la base de datos.", "error");
                 cargarEstados();
+                 $("#codigo_postal").val("");
                 return;
             }
 
@@ -145,7 +145,7 @@ if(codigo_postal_value!=""){
                 municipios.forEach(m => {
                     let datos = m.split("=");
                     if (datos.length == 2) {
-                        municipioSelect.append(`<option value="${datos[0]}">${datos[1]}</option>`);
+                        municipioSelect.append(`<option value="${datos[0]}" selected>${datos[1]}</option>`);
                     }
                 });
             }
@@ -154,7 +154,7 @@ if(codigo_postal_value!=""){
                 localidades.forEach(l => {
                     let datos = l.split("=");
                     if (datos.length == 2) {
-                        localidadSelect.append(`<option value="${datos[0]}">${datos[1]}</option>`);
+                        localidadSelect.append(`<option value="${datos[0]}" selected>${datos[1]}</option>`);
                     }
                 });
             }
