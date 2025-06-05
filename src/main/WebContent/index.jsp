@@ -68,7 +68,7 @@ ArrayList<Estado> listaEstados = (ArrayList<Estado>) request.getAttribute("lista
 							<label for="colonia" class="form-label">Calle y Numero</label> 
 							<input class="form-control" name="calleNumero" id="calleNumero" >
 					</div>
-				<button type="button" class="btn btn-primary form-control" onclick="ValidarFormulario()">Constinuar</button>
+				<button type="button" class="btn btn-primary form-control" onclick="ValidarFormulario()">Continuar</button>
 			</form>
 		</div>
 	
